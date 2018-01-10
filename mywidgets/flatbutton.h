@@ -16,6 +16,7 @@ public:
 
     void setPixmap(const QPixmap &pixmap);
     void setText(const QString &text);
+    void setStyleSheet(const QString &stylest);
 
     inline bool checked() {return checked();}
 
@@ -24,8 +25,11 @@ protected:
 
 private:
     void init();
+
+    static QString defaultStyleSheet;
 private:
     QLabel *label;
+    QString styleSheet;
 };
 
 #endif // FLATBUTTON_H

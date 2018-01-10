@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QPixmap p(":/images/qt_extended_32x32.png");
     button2 = new FlatButton(p, this);
+    button2->setStyleSheet(QString("border-width: 1px;border-style: solid;border-color: rgb(180, 10, 80);"));
     button2->setGeometry(QRect(60, 120, 32, 32));
     connect(button2, &FlatButton::clicked, this, &MainWindow::btton2Clicked);
 

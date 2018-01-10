@@ -3,15 +3,19 @@
 #include <QResizeEvent>
 #include <QStylePainter>
 
+QString FlatButton::defaultStyleSheet("border-width: 1px;border-style: solid;border-color: rgb(80, 80, 80);");
+
 FlatButton::FlatButton(QWidget *parent) :
     QAbstractButton(parent),
-    label(new QLabel(this))
+    label(new QLabel(this)),
+    styleSheet(defaultStyleSheet)
 {
 }
 
 FlatButton::FlatButton(const QPixmap &pixmap, QWidget *parent) :
     QAbstractButton(parent),
-    label(new QLabel(this))
+    label(new QLabel(this)),
+    styleSheet(defaultStyleSheet)
 {
     label->setPixmap(pixmap);
     resize(pixmap.size());
@@ -19,7 +23,8 @@ FlatButton::FlatButton(const QPixmap &pixmap, QWidget *parent) :
 
 FlatButton::FlatButton(const QString &text, QWidget *parent) :
     QAbstractButton(parent),
-    label(new QLabel(text, this))
+    label(new QLabel(text, this)),
+    styleSheet(defaultStyleSheet)
 {
 }
 
@@ -44,10 +49,14 @@ void FlatButton::setText(const QString &text)
 {
     label->setText(text);
 }
+void FlatButton::setStyleSheet(const QString &stylest)
+{
+    styleSheet = stylest;
+}
 
 void FlatButton::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
-    // TODO: draw outline
+    label->setStyleSheet(styleSheet);
 }
 
